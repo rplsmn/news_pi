@@ -29,6 +29,8 @@ log_info(out_path)
 
 log_info("Writing to file")
 
+dir.create(file.path("data"))
+
 jsonlite::write_json(res, out_path)
 
 log_info("End - clean up")
