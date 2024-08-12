@@ -1,4 +1,6 @@
 library(httr2)
+library(jsonlite)
+
 req <-
     request("https:///newsapi.org/v2/everything") |>
     req_url_query(
