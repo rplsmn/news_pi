@@ -6,18 +6,18 @@ req <-
     request("https:///newsapi.org/v2/everything") |>
     req_url_query(
         q = '`"data science"`',
-        from = Sys.Date() - 1,
+        from = Sys.Date()-12,
         pageSize = 10,
         apiKey = Sys.getenv("MYTEMPAPIKEY")
     )
 
 resp <- req_perform(req)
 
-result_size <- length(resp)
+res <- resp_body_json(resp)
+
+result_size <- length(res$articles)
 
 log_info("Result is of size : {result_size}")
-
-res <- resp_body_json(resp)
 
 log_info("API response received")
 
@@ -29,7 +29,7 @@ log_info(out_path)
 
 log_info("Writing to file")
 
-dir.create(file.path("data"))
+file.create(out_path)
 
 jsonlite::write_json(res, out_path)
 
