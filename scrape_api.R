@@ -6,7 +6,7 @@ req <-
     request("https:///newsapi.org/v2/everything") |>
     req_url_query(
         q = '`"data science"`',
-        from = Sys.Date()-12,
+        from = Sys.Date()-1,
         pageSize = 10,
         apiKey = Sys.getenv("MYTEMPAPIKEY")
     )
@@ -27,9 +27,11 @@ log_info("Out path created : ")
 
 log_info(out_path)
 
-log_info("Writing to file")
+log_info("creating file")
 
 file.create(out_path)
+
+log_info("Writing to file")
 
 jsonlite::write_json(res, out_path)
 
