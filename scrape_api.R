@@ -21,7 +21,7 @@ res <- resp_body_json(resp)
 
 log_info("API response received")
 
-out_path <- file.path("data", paste0(format(Sys.Date() - 1, "%Y-%m-%d"), ".json"))
+out_path <- file.path("data", paste0(format(Sys.Date(), "%Y-%m-%d"), ".json"))
 
 log_info("Out path created : ")
 
