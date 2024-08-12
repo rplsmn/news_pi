@@ -12,4 +12,8 @@ jobs:
         with:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
+      - name: Run script w secret
+        run: Rscript scrape_api.R
+        env:
+          MYTEMPAPIKEY: ${{secrets.MYTEMPAPIKEY}}
       - uses: stefanzweifel/git-auto-commit-action@v5
